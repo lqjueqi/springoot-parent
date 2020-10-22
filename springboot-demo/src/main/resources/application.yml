@@ -1,0 +1,43 @@
+#server:
+#  port: 8081
+
+# 默认hikariDataSource
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.147.128:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    #使用第三方druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+person:
+  lastName: hello
+  age: 18
+  boss: false
+  birth: 2017/12/12
+  maps: {k1: v1,k2: 12}
+  lists:
+    - lisi
+    - zhaoliu
+  dog:
+    name: 小狗
+    age: 12
+
+#spring:
+#  thymeleaf:
+#    prefix: classpath:/templates/index/
+#    suffix: .html
+#    #配置视图模板类型,如果使用的是HTML5需要配置
+#    mode: HTML
+#    encoding: utf-8
+#    servlet:
+#      content-type: text/html #配置响应类型
+#    cache: false #配置页面缓存
+#jdbc:
+#  driverClassName: com.mysql.cj.jdbc.Driver
+#  url: jdbc:mysql://192.168.147.128:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#  username: root
+#  password: 123456
+
+#WebMvcConfigurer

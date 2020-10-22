@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- -->
+    <hr/>
+    <span th:text="${msg}"></span>
+    <hr/>
+    <input th:value="${ok}" />
+    <hr/>
+    <span th:text="${#strings.isEmpty(msg)}"></span>
+    <hr/>
+    <span th:text="${#strings.length(msg)}"></span>
+    <hr/>
+    <span th:text="${#dates.format(date)}"></span>
+    <hr/>
+    <span th:text="${#dates.format(date,'yyyy/MM/dd')}"></span>
+    <hr/>
+    <div>
+        <span th:if="${sex}=='男'">
+            性别：男
+        </span>
+        <span th:if="${sex}=='女'">
+            性别：女
+        </span>
+    </div>
+    <hr/>
+    <div th:switch="${id}">
+        <span th:case="1">ID为1</span>
+        <span th:case="2">ID为2</span>
+        <span th:case="3">ID为3</span>
+        <span th:case="*">ID为*</span>
+    </div>
+    <hr/>
+    <table border="1" width="50%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr th:each="u : ${list}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.name}"></td>
+            <td th:text="${u.age}"></td>
+        </tr>
+    </table>
+    <hr/>
+    <table border="1" width="50%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Index</th>
+            <th>Count</th>
+            <th>Size</th>
+            <th>Odd</th>
+            <th>Even</th>
+            <th>First</th>
+            <th>Last</th>
+        </tr>
+        <tr th:each="u,var : ${list}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.name}"></td>
+            <td th:text="${u.age}"></td>
+            <td th:text="${var.index}"></td>
+            <td th:text="${var.count}"></td>
+            <td th:text="${var.size}"></td>
+            <td th:text="${var.odd}"></td>
+            <td th:text="${var.even}"></td>
+            <td th:text="${var.first}"></td>
+            <td th:text="${var.last}"></td>
+        </tr>
+    </table>
+    <hr/>
+    <table border="1" width="50%">
+        <tr>
+            <th>Key</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr th:each="m : ${map}">
+            <td th:text="${m.key}"></td>
+            <td th:text="${m.value.id}"></td>
+            <td th:text="${m.value.name}"></td>
+            <td th:text="${m.value.age}"></td>
+        </tr>
+    </table>
+    <hr/>
+    HttpServletRequest: <span th:text="${#httpServletRequest.getAttribute('req')}"/>
+    <span th:text="${#request.getAttribute('req')}"/>
+    <hr/>
+    HttpSession: <span th:text="${session.ses}"/>
+    <span th:text="${#session.getAttribute('ses')}"/>
+    <hr/>
+    ServletContext: <span th:text="${application.app}"/>
+    <span th:text="${#servletContext.getAttribute('app')}"/>
+    <hr/>
+    <a th:href="@{http://www.baidu.com}">打开百度</a>
+    <hr/>
+    <a th:href="@{/show2}">打开index2</a>
+    <hr/>
+    <a th:href="@{/show2?id=1&name=admin}">普通URL传递参数方式一</a>
+    <hr/>
+    <a th:href="@{/show2(id=2,name=kevin)}">普通URL传递参数方式二</a>
+    <hr/>
+    <a th:href="@{'/show2?id='+${id}+'&name='+${name}}">普通URL传递参数方式三</a>
+    <hr/>
+    <a th:href="@{/show2(id=${id},name=${name})}">普通URL传递参数方式四</a>
+    <hr/>
+    <a th:href="@{/show3/{id}(id=200)}">restful格式传递参数方式一</a>
+    <hr/>
+    <a th:href="@{/show3/{id}/{name}(id=200,name=admin)}">restful格式传递参数方式二</a>
+    <hr/>
+    <a th:href="@{/show4/{id}(id=200,name=admin)}">restful格式传递参数方式三</a>
+    <hr/>
+    <a th:href="@{/show4/{id}(id=${id},name=${name})}">restful格式传递参数方式四</a>
+</body>
+</html>
